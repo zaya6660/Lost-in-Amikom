@@ -1,7 +1,7 @@
 # Lost in Amikom
 
 ## Job Desks
-### Syifa Sri Wahyuni (17.11.1341)
+### Syifa Sri Wahyuni (17.61.0111)
 - Membuat Kerangka Aplikasi
 - Splash Screen
 - Intro
