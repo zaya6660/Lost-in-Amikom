@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#7D1F8D</color>
+    <color name="colorPrimaryDark">#4D1458</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorPurple">#9C27B0</color>
+    <color name="colorActive">#EEC800</color>
+    <color name="colorSkip">#FF9800</color>
+    <color name="gradient_start_color">#4D1458</color>
+    <color name="colorWhite">#FFFFFF</color>
+
+    <!-- colors for tab and screent text -->
+    <color name="tab_indicator_gray">#c0c0c0</color>
+</resources>
