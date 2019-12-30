@@ -2,6 +2,7 @@
 
 ## Job Desks
 ### Syifa Sri Wahyuni (17.61.0111)
+- Membuat Mockup
 - Membuat Kerangka Aplikasi
 - Splash Screen
 - Intro
