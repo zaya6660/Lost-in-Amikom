@@ -1,14 +1,133 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".input">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="input" />
 
-</FrameLayout>
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="288dp"
+        android:layout_height="158dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.027" />
+
+    <Button
+        android:id="@+id/gambar"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/roundbutton"
+        android:ems="8"
+        android:text="Gambar"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_view"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <EditText
+        android:id="@+id/namabarang"
+        android:layout_width="302dp"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:hint="Nama Barang"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/masuk"
+        app:layout_constraintVertical_bias="0.04" />
+
+    <EditText
+        android:id="@+id/waktu"
+        android:layout_width="302dp"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:hint="Waktu"
+        android:inputType="time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/namabarang"
+        app:layout_constraintVertical_bias="0.015" />
+
+    <EditText
+        android:id="@+id/tanggal"
+        android:layout_width="302dp"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:hint="Tanggal"
+        android:inputType="date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/waktu"
+        app:layout_constraintVertical_bias="0.015"/>
+
+    <EditText
+        android:id="@+id/tempat"
+        android:layout_width="302dp"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:hint="Tempat"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tanggal"
+        app:layout_constraintVertical_bias="0.015" />
+
+    <EditText
+        android:id="@+id/nomer"
+        android:layout_width="302dp"
+        android:textSize="16dp"
+        android:layout_height="wrap_content"
+        android:hint="Nomer"
+        android:inputType="phone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tempat"
+        app:layout_constraintVertical_bias="0.015"/>
+
+    <EditText
+        android:id="@+id/keterangan"
+        android:layout_width="302dp"
+        android:hint="Keterangan"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nomer"
+        app:layout_constraintVertical_bias="0.015" />
+
+    <Button
+        android:id="@+id/tambahkan"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:background="@drawable/roundbutton"
+        android:ems="8"
+        android:text="Tambahkan"
+        android:textColor="@color/colorPrimaryDark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/keterangan"
+        app:layout_constraintVertical_bias="0.1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

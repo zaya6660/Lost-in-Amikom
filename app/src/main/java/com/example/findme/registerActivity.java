@@ -1,9 +1,5 @@
 package com.example.findme;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,8 +13,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class registerActivity extends AppCompatActivity {
 
@@ -26,7 +24,6 @@ public class registerActivity extends AppCompatActivity {
     EditText mnama, mpassword, memail;
     FirebaseAuth auth;
     Button mdaftar;
-    DatabaseReference databaseReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +46,7 @@ public class registerActivity extends AppCompatActivity {
 
                 final String nama = mnama.getText().toString();
                 final String email = memail.getText().toString().trim();
-                String password = mpassword.getText().toString().trim();
+                final String password = mpassword.getText().toString().trim();
 
                 if(TextUtils.isEmpty(email)){
                     memail.setError("Email harus diisi");
@@ -62,12 +59,12 @@ public class registerActivity extends AppCompatActivity {
                 }
 
                 if(TextUtils.isEmpty(password)){
-                    mpassword.setError("Eemailmail harus diisi");
+                    mpassword.setError("Email harus diisi");
                     return;
                 }
 
                 if(password.length() < 6){
-                    mpassword.setError("Password kurang kuat");
+                    mpassword.setError("Kata sandi harus lebih dari 6 kata");
                     return;
                 }
 
@@ -79,10 +76,11 @@ public class registerActivity extends AppCompatActivity {
 
                                     User information = new User(
                                             nama,
-                                            email
+                                            email,
+                                            password
                                     );
 
-                                    FirebaseDatabase.getInstance().getReference("findme")
+                                    FirebaseDatabase.getInstance().getReference("user")
                                             .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                             .setValue(information).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
