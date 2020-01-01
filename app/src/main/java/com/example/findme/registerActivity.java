@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class RegisterActivity extends AppCompatActivity {
     EditText mnama, mpassword, memail;
     FirebaseAuth auth;
     Button mdaftar;
+    ProgressBar progressBar;
 
     SessionModel sessionModel;
 
@@ -46,6 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         mpassword = findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
         mdaftar = findViewById(R.id.daftar);
+        progressBar = findViewById(R.id.progressBar);
 
         // Code berikut berfungsi untuk mengecek session, Jika session true ( sudah login )
         // maka langsung memulai MainActivity.
@@ -83,6 +86,8 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                progressBar.setVisibility(View.VISIBLE);
+
                 auth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -107,6 +112,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     });
                                 } else {
                                     Toast.makeText(RegisterActivity.this, "Daftar gagal", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
                                 }
                             }
                         });

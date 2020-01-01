@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText memail, mpassword;
     FirebaseAuth auth;
     Button masuk;
+    ProgressBar progressBar;
 
     SessionModel sessionModel;
 
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         mpassword = findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
         daftar = findViewById(R.id.daftar);
+        progressBar = findViewById(R.id.progressBar);
 
         // Code berikut berfungsi untuk mengecek session, Jika session true ( sudah login )
         // maka langsung memulai MainActivity.
@@ -79,6 +82,8 @@ public class LoginActivity extends AppCompatActivity {
                     mpassword.setError("Kata sandi harus lebih dari 6 kata");
                     return;
                 }
+
+                progressBar.setVisibility(View.VISIBLE);
 
                 auth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
@@ -113,10 +118,12 @@ public class LoginActivity extends AppCompatActivity {
                                 public void onCancelled(@NonNull DatabaseError databaseError) {
                                     Log.e("AUTH INFO", "Failed to load user data.");
                                     Toast.makeText(LoginActivity.this, "Error ! Failed to load user data.", Toast.LENGTH_SHORT).show();
+                                    progressBar.setVisibility(View.GONE);
                                 }
                             });
                         } else {
                             Toast.makeText(LoginActivity.this, "Error ! " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            progressBar.setVisibility(View.GONE);
                         }
 
                     }

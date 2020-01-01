@@ -18,9 +18,11 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.findme.MainActivity;
 import com.example.findme.R;
 import com.example.findme.model.SessionModel;
 import com.example.findme.model.UploadInfo;
@@ -50,6 +52,7 @@ public class InputFragment extends Fragment {
     DatabaseReference databaseReference;
     StorageReference storageReference;
     Uri FilePathUri;
+    ProgressBar progressBar;
 
     Context mContext;
     SessionModel sessionModel;
@@ -79,6 +82,7 @@ public class InputFragment extends Fragment {
         imgview = view.findViewById(R.id.image_view);
         storageReference = FirebaseStorage.getInstance().getReference("images");
         databaseReference = FirebaseDatabase.getInstance().getReference("images");
+        progressBar = view.findViewById(R.id.progressBar);
 
         gambar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -146,6 +150,33 @@ public class InputFragment extends Fragment {
 
     public void UploadImage() {
 
+        if (namaBarang.getText().toString().trim().isEmpty()) {
+            namaBarang.setError("Nama barang harus diisi");
+            return;
+        }
+        if (waktu.getText().toString().trim().isEmpty()) {
+            waktu.setError("Waktu penemuan harus diisi");
+            return;
+        }
+        if (tanggal.getText().toString().trim().isEmpty()) {
+            tanggal.setError("Tanggal penemuan harus diisi");
+            return;
+        }
+        if (tempat.getText().toString().trim().isEmpty()) {
+            tempat.setError("tempat penemuan harus diisi");
+            return;
+        }
+        if (nomer.getText().toString().trim().isEmpty()) {
+            nomer.setError("nomer yang dapat dihubungi harus diisi");
+            return;
+        }
+        if (keterangan.getText().toString().trim().isEmpty()) {
+            keterangan.setError("keterangan harus diisi");
+            return;
+        }
+
+        progressBar.setVisibility(View.VISIBLE);
+
         if (FilePathUri != null) {
 
             StorageReference storageReference2 = storageReference.child(System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
@@ -159,7 +190,7 @@ public class InputFragment extends Fragment {
                     String TmpNomer = nomer.getText().toString().trim();
                     String TmpKeterangan = keterangan.getText().toString().trim();
 
-                    Toast.makeText(mContext, "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, "Tambahkan penemuan telah berhasil", Toast.LENGTH_LONG).show();
 
                     @SuppressWarnings("VisibleForTests")
                     UploadInfo imageUploadInfo = new UploadInfo(sessionModel.getUserId(), TmpNamaBarang, taskSnapshot.getUploadSessionUri().toString(), TmpWaktu, TmpTanggal, TmpTempat, TmpNomer, TmpKeterangan);
@@ -168,6 +199,7 @@ public class InputFragment extends Fragment {
 
                     String ImageUploadId = databaseReference.push().getKey();
                     databaseReference.child(ImageUploadId).setValue(imageUploadInfo);
+                    startActivity(new Intent(mContext.getApplicationContext(), MainActivity.class));
                 }
             });
         }
@@ -202,7 +234,7 @@ public class InputFragment extends Fragment {
                 waktu.setText(selectedHour + ":" + selectedMinute);
             }
         }, hour, minute, true);//Yes 24 hour time
-        mTimePicker.setTitle("Select Time");
+        mTimePicker.setTitle("Pilih waktu");
         mTimePicker.show();
     }
 
