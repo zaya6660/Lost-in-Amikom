@@ -12,12 +12,14 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.findme.adapter.IntroViewPagerAdapter;
+import com.example.findme.model.ScreenItem;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class introActivity extends AppCompatActivity {
+public class IntroActivity extends AppCompatActivity {
 
     private ViewPager screenPager;
     TabLayout tabIndicator;
@@ -34,7 +36,7 @@ public class introActivity extends AppCompatActivity {
 
         // when this activity is about to be launch we need to check if its openened before or not
         if (restorePrefData()) {
-            Intent loginActivity = new Intent(getApplicationContext(),loginActivity.class );
+            Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class );
             startActivity(loginActivity);
             finish();
         }
@@ -52,10 +54,10 @@ public class introActivity extends AppCompatActivity {
         tvSkip = findViewById(R.id.tv_skip);
 
         // fill list screen
-        final List<screenitem> mList = new ArrayList<>();
-        mList.add(new screenitem("","Apakah anda sering kehilangan benda yang sangat penting?",R.drawable.intro1));
-        mList.add(new screenitem("","Anda bingung mencarinya atau merasa putus asa?",R.drawable.intro2));
-        mList.add(new screenitem("","Tenang aja, FindMe dapat membantu menemukan benda penting anda.",R.drawable.intro3));
+        final List<ScreenItem> mList = new ArrayList<>();
+        mList.add(new ScreenItem("","Apakah anda sering kehilangan benda yang sangat penting?",R.drawable.intro1));
+        mList.add(new ScreenItem("","Anda bingung mencarinya atau merasa putus asa?",R.drawable.intro2));
+        mList.add(new ScreenItem("","Tenang aja, FindMe dapat membantu menemukan benda penting anda.",R.drawable.intro3));
 
         // setup viewpager
         screenPager =findViewById(R.id.screen_viewpager);
@@ -106,7 +108,7 @@ public class introActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //open main activity
-                Intent loginActivity = new Intent(getApplicationContext(),loginActivity.class);
+                Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginActivity);
                 // also we need to save a boolean value to storage so next time when the user run the app
                 // we could know that he is already checked the intro screen activity

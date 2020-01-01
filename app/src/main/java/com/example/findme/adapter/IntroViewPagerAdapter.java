@@ -1,4 +1,4 @@
-package com.example.findme;
+package com.example.findme.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.findme.screenitem;
 import com.example.findme.R;
+import com.example.findme.model.ScreenItem;
 
 import java.util.List;
 
@@ -17,9 +17,9 @@ import androidx.viewpager.widget.PagerAdapter;
 
 public class IntroViewPagerAdapter extends PagerAdapter {
     Context mContext ;
-    List<screenitem> mListScreen;
+    List<ScreenItem> mListScreen;
 
-    public IntroViewPagerAdapter(Context mContext, List<screenitem> mListScreen) {
+    public IntroViewPagerAdapter(Context mContext, List<ScreenItem> mListScreen) {
         this.mContext = mContext;
         this.mListScreen = mListScreen;
     }

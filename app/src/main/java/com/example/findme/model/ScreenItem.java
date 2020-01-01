@@ -1,10 +1,10 @@
-package com.example.findme;
+package com.example.findme.model;
 
-public class screenitem {
+public class ScreenItem {
     String Title, Description;
     int ScreenImg;
 
-    public screenitem(String title, String description, int screenImg) {
+    public ScreenItem(String title, String description, int screenImg) {
         Title = title;
         Description = description;
         ScreenImg = screenImg;

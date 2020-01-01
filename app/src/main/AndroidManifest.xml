@@ -11,12 +11,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".registerActivity"></activity>
+        <activity android:name=".RegisterActivity"></activity>
         <activity
-            android:name=".introActivity"
+            android:name=".IntroActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".splashScreenActivity"
+            android:name=".SplashScreenActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,9 +25,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".loginActivity"
+            android:name=".LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".setting" />
+        <activity android:name=".SettingActivity" />
         <activity android:name=".MainActivity"></activity>
     </application>
 

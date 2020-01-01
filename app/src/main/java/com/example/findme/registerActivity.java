@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.findme.model.SessionModel;
+import com.example.findme.model.UserManagement;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -18,12 +20,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class registerActivity extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     TextView mmasuk;
     EditText mnama, mpassword, memail;
     FirebaseAuth auth;
     Button mdaftar;
+
+    SessionModel sessionModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +37,23 @@ public class registerActivity extends AppCompatActivity {
         // hide the action bar
         getSupportActionBar().hide();
 
+        // load model session
+        sessionModel = new SessionModel(this);
+
         mmasuk = findViewById(R.id.masuk);
         mnama = findViewById(R.id.nama);
         memail = findViewById(R.id.email);
         mpassword = findViewById(R.id.password);
         auth = FirebaseAuth.getInstance();
         mdaftar = findViewById(R.id.daftar);
+
+        // Code berikut berfungsi untuk mengecek session, Jika session true ( sudah login )
+        // maka langsung memulai MainActivity.
+        if (sessionModel.getSudahLogin()){
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
         mdaftar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,12 +84,12 @@ public class registerActivity extends AppCompatActivity {
                 }
 
                 auth.createUserWithEmailAndPassword(email, password)
-                        .addOnCompleteListener(registerActivity.this, new OnCompleteListener<AuthResult>() {
+                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
 
-                                    User information = new User(
+                                    UserManagement information = new UserManagement(
                                             nama,
                                             email,
                                             password
@@ -86,12 +101,12 @@ public class registerActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
 
-                                            Toast.makeText(registerActivity.this, "Daftar berhasil", Toast.LENGTH_SHORT).show();
-                                            startActivity(new Intent(getApplicationContext(),loginActivity.class));
+                                            Toast.makeText(RegisterActivity.this, "Daftar berhasil", Toast.LENGTH_SHORT).show();
+                                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                                         }
                                     });
                                 } else {
-                                    Toast.makeText(registerActivity.this, "Daftar gagal", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegisterActivity.this, "Daftar gagal", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -101,7 +116,7 @@ public class registerActivity extends AppCompatActivity {
         mmasuk.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(registerActivity.this,loginActivity.class);
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                 startActivity(intent);
             }
         });

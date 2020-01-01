@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".input">
+    tools:context=".fragment.InputFragment">
 
 
     <ImageView
@@ -37,8 +37,9 @@
         android:id="@+id/namabarang"
         android:layout_width="302dp"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:layout_marginBottom="440dp"
         android:hint="Nama Barang"
+        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"

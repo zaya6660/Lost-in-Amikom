@@ -3,12 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dasboard">
+    tools:context=".fragment.DasboardFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Dashboard" />
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvNama"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Username" />
+    </LinearLayout>
 
 </FrameLayout>

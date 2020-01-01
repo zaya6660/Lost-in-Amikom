@@ -1,14 +1,14 @@
-package com.example.findme;
+package com.example.findme.model;
 
-public class User {
+public class UserManagement {
     private String nama;
     private String email;
     private String password;
 
-    public User() {
+    public UserManagement() {
     }
 
-    public User(String nama, String email, String password) {
+    public UserManagement(String nama, String email, String password) {
         this.nama = nama;
         this.email = email;
         this.password = password;
