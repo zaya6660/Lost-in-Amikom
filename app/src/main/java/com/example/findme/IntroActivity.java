@@ -122,7 +122,9 @@ public class IntroActivity extends AppCompatActivity {
         tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                screenPager.setCurrentItem(mList.size());
+                //screenPager.setCurrentItem(mList.size());
+                Intent loginActivity = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(loginActivity);
             }
         });
     }
